@@ -1,0 +1,83 @@
+check,scope,expected,actual,result
+L. Report date,funding sheet,2026-11-20,2026-11-20,PASS
+L. Header labels,funding sheet,"('Report Date:', 'Amount')","('Report Date:', 'Amount')",PASS
+L. No stray rows,funding sheet,[],[],PASS
+L. Sections in fixed order,funding sheet,"['ACH Gross Collection', 'ACH Gross Credit', 'ACH Gross Interchange Withheld', 'ACH Net', 'Wire']","['ACH Gross Collection', 'ACH Gross Credit', 'ACH Gross Interchange Withheld', 'ACH Net', 'Wire']",PASS
+"L. All configured clients, fixed order",funding sheet,"[('ACH Gross Collection', 'F-1001'), ('ACH Gross Collection', 'F-1002'), ('ACH Gross Collection', 'F-1003'), ('ACH Gross Collection', 'F-1004'), ('ACH Gross Credit', 'F-1001'), ('ACH Gross Credit', 'F-1002'), ('ACH Gross Interchange Withheld', 'F-1003'), ('ACH Net', 'F-2001'), ('ACH Net', 'F-2002'), ('ACH Net', 'F-2003'), ('ACH Net', 'F-2004'), ('Wire', 'F-1003'), ('Wire', 'F-1004')]","[('ACH Gross Collection', 'F-1001'), ('ACH Gross Collection', 'F-1002'), ('ACH Gross Collection', 'F-1003'), ('ACH Gross Collection', 'F-1004'), ('ACH Gross Credit', 'F-1001'), ('ACH Gross Credit', 'F-1002'), ('ACH Gross Interchange Withheld', 'F-1003'), ('ACH Net', 'F-2001'), ('ACH Net', 'F-2002'), ('ACH Net', 'F-2003'), ('ACH Net', 'F-2004'), ('Wire', 'F-1003'), ('Wire', 'F-1004')]",PASS
+L. Client name matches configuration,F-1001 / ACH Gross Collection,Lakeside Utilities Co,Lakeside Utilities Co,PASS
+L. Amount is a valid number (2 decimals),F-1001 / ACH Gross Collection,True,True,PASS
+L. Client name matches configuration,F-1002 / ACH Gross Collection,Northfield Water District,Northfield Water District,PASS
+L. Amount is a valid number (2 decimals),F-1002 / ACH Gross Collection,True,True,PASS
+L. Client name matches configuration,F-1003 / ACH Gross Collection,Summit Property Group,Summit Property Group,PASS
+L. Amount is a valid number (2 decimals),F-1003 / ACH Gross Collection,True,True,PASS
+L. Client name matches configuration,F-1004 / ACH Gross Collection,Pine Valley Medical,Pine Valley Medical,PASS
+L. Amount is a valid number (2 decimals),F-1004 / ACH Gross Collection,True,True,PASS
+L. Total row sums exactly its section,ACH Gross Collection,=SUM(D4:D7),=SUM(D4:D7),PASS
+L. Total shown in file = sum of section lines,ACH Gross Collection,5575.63,5575.63,PASS
+L. Client name matches configuration,F-1001 / ACH Gross Credit,Lakeside Utilities Co,Lakeside Utilities Co,PASS
+L. Amount is a valid number (2 decimals),F-1001 / ACH Gross Credit,True,True,PASS
+L. Client name matches configuration,F-1002 / ACH Gross Credit,Northfield Water District,Northfield Water District,PASS
+L. Amount is a valid number (2 decimals),F-1002 / ACH Gross Credit,True,True,PASS
+L. Total row sums exactly its section,ACH Gross Credit,=SUM(D11:D12),=SUM(D11:D12),PASS
+L. Total shown in file = sum of section lines,ACH Gross Credit,9276.66,9276.66,PASS
+L. Client name matches configuration,F-1003 / ACH Gross Interchange Withheld,Summit Property Group,Summit Property Group,PASS
+L. Amount is a valid number (2 decimals),F-1003 / ACH Gross Interchange Withheld,True,True,PASS
+L. Total row sums exactly its section,ACH Gross Interchange Withheld,=SUM(D16:D16),=SUM(D16:D16),PASS
+L. Total shown in file = sum of section lines,ACH Gross Interchange Withheld,3087.74,3087.74,PASS
+L. Client name matches configuration,F-2001 / ACH Net,Riverbend HOA Services,Riverbend HOA Services,PASS
+L. Amount is a valid number (2 decimals),F-2001 / ACH Net,True,True,PASS
+L. Client name matches configuration,F-2002 / ACH Net,Cedar Creek Dental,Cedar Creek Dental,PASS
+L. Amount is a valid number (2 decimals),F-2002 / ACH Net,True,True,PASS
+L. Client name matches configuration,F-2003 / ACH Net,Harbor Point Rentals,Harbor Point Rentals,PASS
+L. Amount is a valid number (2 decimals),F-2003 / ACH Net,True,True,PASS
+L. Client name matches configuration,F-2004 / ACH Net,Maple Grove Storage,Maple Grove Storage,PASS
+L. Amount is a valid number (2 decimals),F-2004 / ACH Net,True,True,PASS
+L. Total row sums exactly its section,ACH Net,=SUM(D20:D23),=SUM(D20:D23),PASS
+L. Total shown in file = sum of section lines,ACH Net,5858.36,5858.36,PASS
+L. Client name matches configuration,F-1003 / Wire,Summit Property Group,Summit Property Group,PASS
+L. Amount is a valid number (2 decimals),F-1003 / Wire,True,True,PASS
+L. Client name matches configuration,F-1004 / Wire,Pine Valley Medical,Pine Valley Medical,PASS
+L. Amount is a valid number (2 decimals),F-1004 / Wire,True,True,PASS
+L. Total row sums exactly its section,Wire,=SUM(D27:D28),=SUM(D27:D28),PASS
+L. Total shown in file = sum of section lines,Wire,149414.51,149414.51,PASS
+A. Source accounted for,C100 / F-1001,True,True,PASS
+A. Source accounted for,C101 / F-1002,True,True,PASS
+A. Source accounted for,C101 / F-1099,True,True,PASS
+A. Source accounted for,C102 / F-1003,True,True,PASS
+A. Source accounted for,C103 / F-1004,True,True,PASS
+A. Source accounted for,C200 / F-2001,True,True,PASS
+A. Source accounted for,C201 / F-2002,True,True,PASS
+A. Source accounted for,C202 / F-2003,True,True,PASS
+B. Amount = funding rule applied to source,F-1001 / ACH Gross Collection,336.82,336.82,PASS
+B. Amount = funding rule applied to source,F-1002 / ACH Gross Collection,127.46,127.46,PASS
+B. Amount = funding rule applied to source,F-1003 / ACH Gross Collection,5111.35,5111.35,PASS
+B. Amount = funding rule applied to source,F-1004 / ACH Gross Collection,0.00,0,PASS
+B. Amount = funding rule applied to source,F-1001 / ACH Gross Credit,6728.58,6728.58,PASS
+B. Amount = funding rule applied to source,F-1002 / ACH Gross Credit,2548.08,2548.08,PASS
+B. Amount = funding rule applied to source,F-1003 / ACH Gross Interchange Withheld,3087.74,3087.74,PASS
+B. Amount = funding rule applied to source,F-2001 / ACH Net,4395.62,4395.62,PASS
+B. Amount = funding rule applied to source,F-2002 / ACH Net,1462.74,1462.74,PASS
+B. Amount = funding rule applied to source,F-2003 / ACH Net,0.00,0,PASS
+B. Amount = funding rule applied to source,F-2004 / ACH Net,0.00,0,PASS
+B. Amount = funding rule applied to source,F-1003 / Wire,140352.28,140352.28,PASS
+B. Amount = funding rule applied to source,F-1004 / Wire,9062.23,9062.23,PASS
+C. Detail file total = summary file total,payments,167745.90,167745.90,PASS
+C. Detail file total = summary file total,cb_returns,6458.78,6458.78,PASS
+C. Detail file total = summary file total,interchange,3569.94,3569.94,PASS
+"D. Bank file format: 2 columns, no header",ACH_Collections,True,True,PASS
+D. Bank file lines and order = funding sheet section,ACH_Collections,"[('F-1001', Decimal('336.82')), ('F-1002', Decimal('127.46')), ('F-1003', Decimal('5111.35')), ('F-1004', Decimal('0'))]","[('F-1001', Decimal('336.82')), ('F-1002', Decimal('127.46')), ('F-1003', Decimal('5111.35')), ('F-1004', Decimal('0.00'))]",PASS
+D. Bank file line count = funding sheet section,ACH_Collections,4,4,PASS
+D. Bank file total = funding sheet section total,ACH_Collections,5575.63,5575.63,PASS
+"D. Bank file format: 2 columns, no header",ACH_Gross,True,True,PASS
+D. Bank file lines and order = funding sheet section,ACH_Gross,"[('F-1001', Decimal('6728.58')), ('F-1002', Decimal('2548.08'))]","[('F-1001', Decimal('6728.58')), ('F-1002', Decimal('2548.08'))]",PASS
+D. Bank file line count = funding sheet section,ACH_Gross,2,2,PASS
+D. Bank file total = funding sheet section total,ACH_Gross,9276.66,9276.66,PASS
+"D. Bank file format: 2 columns, no header",ACH_Interchange_Withheld,True,True,PASS
+D. Bank file lines and order = funding sheet section,ACH_Interchange_Withheld,"[('F-1003', Decimal('3087.74'))]","[('F-1003', Decimal('3087.74'))]",PASS
+D. Bank file line count = funding sheet section,ACH_Interchange_Withheld,1,1,PASS
+D. Bank file total = funding sheet section total,ACH_Interchange_Withheld,3087.74,3087.74,PASS
+"D. Bank file format: 2 columns, no header",ACH_Net,True,True,PASS
+D. Bank file lines and order = funding sheet section,ACH_Net,"[('F-2001', Decimal('4395.62')), ('F-2002', Decimal('1462.74')), ('F-2003', Decimal('0')), ('F-2004', Decimal('0'))]","[('F-2001', Decimal('4395.62')), ('F-2002', Decimal('1462.74')), ('F-2003', Decimal('0.00')), ('F-2004', Decimal('0.00'))]",PASS
+D. Bank file line count = funding sheet section,ACH_Net,4,4,PASS
+D. Bank file total = funding sheet section total,ACH_Net,5858.36,5858.36,PASS
+E. Funding sheet total = bank files + wires,all,173212.90,173212.90,PASS

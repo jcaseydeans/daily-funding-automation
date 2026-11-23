@@ -1,0 +1,9 @@
+client_id,client_name,funding_id,settlement_type,credit_method,withhold_interchange,notes
+C100,Lakeside Utilities Co,F-1001,Gross,ACH,N,
+C101,Northfield Water District,F-1002,Gross,ACH,N,
+C102,Summit Property Group,F-1003,Gross,Wire,Y,High daily interchange; withheld daily instead of billed monthly
+C103,Pine Valley Medical,F-1004,Gross,Wire,N,
+C200,Riverbend HOA Services,F-2001,Net,ACH,N,
+C201,Cedar Creek Dental,F-2002,Net,ACH,N,
+C202,Harbor Point Rentals,F-2003,Net,ACH,N,
+C203,Maple Grove Storage,F-2004,Net,ACH,N,No activity on sample day

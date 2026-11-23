@@ -1,0 +1,3 @@
+client_id,funding_id,amount,issue
+C101,F-1099,2517.52,Funding ID not in configuration. Not onboarded / no approved bank account mapped. Do not fund until resolved.
+C202,F-2003,-204.30,Net client: chargebacks/returns exceed payments. HELD for review before funding ($0.00 on funding sheet).
