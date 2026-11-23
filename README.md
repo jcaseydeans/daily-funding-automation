@@ -4,7 +4,7 @@ A simplified rebuild of a daily merchant funding process I redesigned in payment
 
 ## The problem
 
-For about 30 years, daily funding at the company was done by hand. Staff read spreadsheets and ledgers, calculated amounts and typed the numbers in. It took about 1.5 hours a day, and every manual step was a chance for human error.
+Daily funding had been done by hand for 30 years. People read spreadsheets and ledgers, calculated amounts and typed the numbers in. It took about 1.5 hours a day, and every manual step was a chance for human error.
 
 ## How the process evolved
 
@@ -12,8 +12,8 @@ For about 30 years, daily funding at the company was done by hand. Staff read sp
 |---|---|---|---|
 | Original | Ledgers and spreadsheets, by hand | ~1.5 hours | Manual calculation and keying |
 | 1 | Excel | ~30 minutes | Raw data in, one standardized, repeatable funding sheet out |
-| 2 | Alteryx | ~30 minutes | Same logic rebuilt in Alteryx. Worked, but needed a paid subscription and was harder to change |
-| 3 | Python (written with Claude) | ~10 minutes | Same logic as a script. Free to run, easy to update, can be scheduled to run each morning |
+| 2 | Alteryx | ~30 minutes | Same logic rebuilt in Alteryx. Worked, but required a paid subscription and was cumbersome to update |
+| 3 | Python (written with Claude) | ~10 minutes | Same logic as a script. No subscription, easy to update, can be scheduled to run each morning. Also produced a file for each funding template set up with the bank, ready to upload in the bank portal. Wires were still entered manually |
 
 Before switching to the Python script, I ran it side by side with the Alteryx workflow for two months and compared results every day. During that time the script caught errors that Alteryx had missed, including the one in the case study below.
 
@@ -111,27 +111,27 @@ The bank account details stay with each template in the bank portal, not in thes
 2. **Raw data.** If there's still a gap, check the summary and detail files against both the bank and the funding sheet.
 3. **Backend.** If everything matches and the client still disputes the amount, work with the development team to review the backend tables and scripts.
 
-Problems that reach Level 3 are usually an unusual payment scenario. Either it had never happened before, or it was a known possibility the company chose not to build for. Once it happens, it gets one of two fixes:
+Problems that reach Level 3 are usually an unusual payment scenario. Either it had never happened before, or it was a known possibility that was left out of the original build to save time or money. Once it happens, it gets one of two fixes:
 - a permanent fix in the backend, or
 - a new check that catches it before that day's funding goes out.
 
 ## Case study: the payments with no funding ID
 
-A client expanded its business and asked for new bank accounts to hold the new business's funds. The project manager told the development team but not payments operations.
+A client asked for new bank accounts for a new part of its business. The project manager told the development team, but not payments operations.
 
-When development finished, the Python script started producing funding amounts with **no funding ID attached**. The payments were real, but no approved bank account was mapped to them yet. When I investigated, I found the new accounts still needed the standard underwriting checks before they could be fully onboarded.
+When development finished, the Python script started producing funding amounts with **no funding ID attached**. The payments were real, but no approved bank account was mapped to them yet. When I investigated, I found the new accounts still needed underwriting before any money could be moved.
 
 **The Python script surfaced these payments. The Alteryx workflow ignored them.**
 
 Lessons:
-- **Never drop data silently.** Every payment should either map to a funding ID or show up as an exception for someone to review.
+- **Automation is only as good as how it handles what it doesn't expect.** It should flag those cases, not skip them. Every payment should either map to a funding ID or show up as an exception for someone to review.
 - **Operations belongs in change management.** A change to how money moves needs payments operations involved before it goes live, not after.
 
 ## How AI was used
 
 I designed the process, the business rules and the output. Claude wrote the Python code from that design. I tested it, ran it alongside the existing process and confirmed the results before relying on it.
 
-AI has made it possible for almost anyone willing to do the due diligence to work like a junior developer. That opens the door for operations people to learn more about the technical side.
+AI has made it possible for operations people to build tools that used to require a developer, as long as they test them as carefully as any other control. That opens the door to learning more about the technical side.
 
 ## Checks built into the sample script
 
